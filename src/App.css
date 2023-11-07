@@ -38,21 +38,33 @@
   }
 }
 
-nav ul {
-  list-style-type: none;
-  padding: 0;
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
 }
 
-nav li {
-  display: inline;
-  margin-right: 10px;
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
 }
 
-nav a {
+header nav a {
+  color: white;
   text-decoration: none;
-  color: blue;
 }
 
-nav a:hover {
-  text-decoration: underline;
+main {
+  margin: 1rem;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

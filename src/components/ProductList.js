@@ -1,45 +1,36 @@
-// src/views/PropertyList.js
-import React, { useState, useEffect } from 'react';
+// ProductList.js
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../store';
 
 function ProductList() {
-  const [products, setProducts ] = useState([]);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.filter(product => product.stock > 0));
 
   useEffect(() => {
-    fetch('https://dummyjson.com/products')
-    .then(response => response.json()) 
-    .then(json => setProducts(json.products))
-  }, []);
+    dispatch(fetchProducts(false)); // Mettez `true` pour utiliser les données mockées
+  }, [dispatch]);
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-      <h2 class="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
-      <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        {products.map(product => (
-                <>
-                <div key={product.id} className="group relative">
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                    src={product.images[0]}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                </div>
-                <div className="mt-4 flex justify-between">
-                    <div>
-                    <h3 className="text-sm text-gray-700">
-                        <a href={product.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {product.title}
-                        </a>
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500">{product.category}</p>
-                    </div>
-                    <p className="text-sm font-medium text-gray-900">{product.price}</p>
-                </div>
-                </div>
-                
-                </>
-            ))}
-
+    <div className="p-6 bg-gray-200">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {products.map((product) => (
+          <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src={product.thumbnail} alt="product" className="w-full h-48 object-cover" />
+            <div className="p-4">
+              <h3 className="text-lg font-semibold">{product.title}</h3>
+              <p className="text-gray-700">{product.description}</p>
+              <div className="mt-2">
+                <span className="text-lg font-bold">${product.price}</span>
+              </div>
+              <div className="mt-4">
+                <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

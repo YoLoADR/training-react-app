@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-//import { AppContextProvider } from './context/AppContextProvider'
 import { Provider } from 'react-redux';
 import store from './store';
 import './App.css';

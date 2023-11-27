@@ -1,7 +1,7 @@
 // store.js
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import { apiService } from '../services/apiService'; // Assurez-vous que le chemin est correct
 import { productsDB } from '../mocks/productsDB'; // Assurez-vous que le chemin est correct
+import { apiService } from '../services/apiService'; // Assurez-vous que le chemin est correct
 
 const initialState = {
   products: [],

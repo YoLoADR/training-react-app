@@ -1,17 +1,26 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../contexts/UserContext';
+import { UserContext } from '../context/UserContext'
 
-function UserProfile() {
-  const { userList } = useContext(UserContext);
-  const user = userList[0]; // Simule l'utilisateur connecté
+function UserProfile(){
+    const { usersList } = useContext(UserContext);
 
-  return (
-    <div>
-      <h2>Profil de l'Utilisateur</h2>
-      <p>Nom: {user.name}</p>
-      <p>Email: {user.email}</p>
-    </div>
-  );
+    console.log("usersList", usersList);
+
+    return (
+        <div>
+            <h2>Liste ds utilisateur :</h2>
+            <ul>
+                {usersList.map(user => (
+                    <li key={user.id}>
+                        <h3>Name : {user.name}</h3>
+                        <p>E-mail :{user.email}</p>
+                        <hr/>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+       
 }
 
 export default UserProfile;

@@ -1,24 +1,26 @@
-// src/views/PropertyList.js
 import React, { useContext } from 'react';
-import { PropertiesContext } from '../contexts/PropertiesContext';
+import { PropertiesContext } from '../context/PropertiesContext'
 
-function PropertyList() {
-  const { propertyList } = useContext(PropertiesContext);
+function PropertyList(){
+    const { propertyList } = useContext(PropertiesContext);
 
-  return (
-    <div>
-      <h2>Liste des Propriétés</h2>
-      <ul>
-        {propertyList.map(property => (
-          <li key={property.id}>
-            <h3>{property.title}</h3>
-            <p>{property.description}</p>
-            <p>{property.price}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    console.log("propertyList", propertyList);
+
+    return (
+        <div>
+            <h2>Liste de properties :</h2>
+            <ul>
+                {propertyList.map(property => (
+                    <li key={property.id}>
+                        <h3>Name : {property.title}</h3>
+                        <p>Description :{property.description}</p>
+                        <p>Price :{property.price}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+       
 }
 
 export default PropertyList;

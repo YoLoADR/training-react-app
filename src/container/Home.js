@@ -5,7 +5,7 @@ import PropertyList from '../components/PropertyList'
 function Home() {
   return (
     <div>
-      <h1>Accueil</h1>
+      <h1 className="text-3xl font-bold underline">Accueil</h1>
       <p>Bienvenue sur la page d'accueil de notre application en Live !</p>
       <Link to="/about">Lien vers : A propos</Link>
       <PropertyList/>

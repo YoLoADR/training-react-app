@@ -1,14 +1,14 @@
 // ProductList.js
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../store';
+import { fetchProducts } from '../store/slices/productsSlice';
 
 function ProductList() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.filter(product => product.stock > 0));
+  const products = useSelector((state) => state.products.products.filter(product => product.stock > 0));
 
   useEffect(() => {
-    dispatch(fetchProducts(false)); // Mettez `true` pour utiliser les données mockées
+    dispatch(fetchProducts(true)); // Mettez `true` pour utiliser les données mockées
   }, [dispatch]);
 
   return (

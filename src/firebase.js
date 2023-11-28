@@ -1,5 +1,7 @@
-import firebase from "firebase/compat/app";
-import "firebase/compat/firestore";
+// fichier firebase.js
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -15,11 +17,13 @@ const firebaseConfig = {
   measurementId: "G-RZFK2MTGYG"
 };
 
-// Initialiser Firebase
-if(!firebase.apps.length){
-    firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
 } else {
-    firebase.app()
+  firebase.app(); // si déjà initialisé, utilisez cette instance
 }
 
 export const db = firebase.firestore();
+export const auth = firebase.auth(); // Exporter auth pour l'utiliser dans le slice
+
+export default firebase;
